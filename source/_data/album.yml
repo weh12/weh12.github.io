@@ -1,0 +1,27 @@
+- class_name: 美女&&Cosplay
+  path_name: /wordScenery
+  type: 2
+  description: 老司机你懂得
+  cover: https://s2.loli.net/2024/10/04/P2lZ1MVpvSYs9ry.webp
+  top_background: https://s2.loli.net/2024/10/04/wSexMmzXB2REu6U.webp
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  album_list:
+    - date: 2022/10/26 01:00:00
+      content: 妮可
+      address: 绝区零
+      from: 再吃一口就减肥
+      image:
+        - https://s2.loli.net/2024/10/04/6aD2L49yzPSlChI.webp
+    - date: 2022-10-25
+      content: 妮可
+      address: 河南洛阳
+      from: 紫菜卷
+      image:
+        - https://s2.loli.net/2024/10/04/acmL4VNwBsigTb9.webp
+        - https://s2.loli.net/2024/10/04/aqcIxT8nRHSuVr6.webp
