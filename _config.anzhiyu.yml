@@ -90,7 +90,7 @@ author_status:
 
 # Algolia search
 algolia_search:
-  enable: true
+  enable: false
   hits:
     per_page: 6
   tags:
@@ -110,7 +110,7 @@ docsearch:
 
 # Local search
 local_search:
-  enable: false
+  enable: true
   preload: true
   CDN:
 
@@ -349,7 +349,7 @@ valine:
 # waline - A simple comment system with backend support fork from Valine
 # https://waline.js.org/
 waline:
-  serverURL: https://walines-e23aufah8-weh12s-projects.vercel.app/ # Waline server address url
+  serverURL: walines-two.vercel.app # Waline server address url
   bg: # waline background
   pageview: true
   meta: false # 归属地, 操作系统 前是否显示图标

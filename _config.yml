@@ -154,28 +154,33 @@ aplayer:
 
 # Extensions
 plugins: 
-  - hexo-algoliasearch
-algolia:
-  appId: "UFDCULHBDC"
-  apiKey: "dc6d6df5a49197449a30888a10cef77b"
-  adminApiKey: "a44b92a529d6525beda86b587f7e9f80"
-  chunkSize: 5000
-  indexName: "my-hexo-blog"
-  fields:
-    - content:strip:truncate,0,500
-    - excerpt:strip
-    - gallery
-    - permalink
-    - photos
-    - slug
-    - tags
-    - title
+  - hexo-generator-search
+
+search:
+  path: search.xml
+  field: post
+  content: true
+# algolia:
+#   appId: "JJ4B0XUT6S"
+#   apiKey: "3981e2eede7acf00bee30038d372bba4"
+#   adminApiKey: "58a2872a166afa57c8bbe228768e0ee7"
+#   chunkSize: 5000
+#   indexName: "hexo"
+#   fields:
+#     - content:strip:truncate,0,500
+#     - excerpt:strip
+#     - gallery
+#     - permalink
+#     - photos
+#     - slug
+#     - tags
+#     - title
 ## Themes: https://hexo.io/themes/
 theme: anzhiyu
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-	type: git
-	repository: git@github.com:weh12/weh12.github.io.git       //填入生成的网站地址，每个人都不一样。
-	branch: master
+  type: git
+  repository: git@github.com:weh12/weh12.github.io.git       //填入生成的网站地址，每个人都不一样。
+  branch: main
