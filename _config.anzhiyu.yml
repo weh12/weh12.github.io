@@ -1060,10 +1060,10 @@ home_top:
     swiper_css: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css #swiper css依赖
     swiper_js: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.js #swiper js依赖
   banner:
-    tips: 新品主题
-    title: Theme-AnZhiYu
-    image: https://bu.dusays.com/2023/05/13/645fa3cf90d70.webp
-    link: https://docs.anheyu.com/
+    tips: B站
+    title: 桐叶勻
+    image: https://pic.imgdb.cn/item/6709f231d29ded1a8c644426.jpg
+    link: https://space.bilibili.com/1783037449
 
 # 朋友圈配置
 friends_vue:
