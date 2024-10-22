@@ -7,6 +7,7 @@ tags:
 
 - hexo
 
+cover: https://i.loli.net/2020/12/15/CBjwueKp3oFsyZX.jpg
 ---
 
 [](https://github.com/LouisBarranqueiro/hexo-algoliasearch#hexo-algoliasearch)
