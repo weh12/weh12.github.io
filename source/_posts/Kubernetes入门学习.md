@@ -5,7 +5,7 @@ categories: 教程
 tags: Kubernetes
 cover: https://pic.imgdb.cn/item/67275883d29ded1a8c878153.jpg
 ---
-Kubernetes简介
+## Kubernetes简介
 
 Kubernetes是一个开源的容器编排平台
 
@@ -154,4 +154,66 @@ spec:
 
 ## Kubernetes架构
 
-还在学习中, 更新未完待续.....
+Kubernetes是一个典型的Master-Worker架构, Master-Node负责管理整个集群, Worker-Node负责运行应用程序和服务
+
+![](https://pic.imgdb.cn/item/67279a45d29ded1a8ccee92f.png)
+
+每个工作节点上的容器都有一个容器运行时container-runtime, 在学习Docker的时候, 我们知道也有一个运行时Docker-Engine, 在Kubernetes中可以选择任何你想要的运行时
+
+![](https://s2.loli.net/2024/11/03/15UYySw4EZkPNHc.png)
+
+`kubelet`是 Kubernetes 集群中每个节点上运行的主要“节点代理”，它负责处理 Master 节点下发到本节点的任务，管理 Pod 和其中的容器。
+
+`Kube-proxy`是 Kubernetes 集群中的一个重要组件，主要负责实现服务的网络代理和负载均衡功能。
+
+> Master-Worker核心组件
+
+- `kube-apiserver` 是 Kubernetes 集群中的核心组件之一，主要负责处理所有与 Kubernetes API 的交互。以下是它的一些关键特性和功能：
+  
+
+1. **API 处理**：`kube-apiserver` 提供 Kubernetes 各类资源对象（如 Pod、Deployment、Service 等）的增、删、改、查及 Watch 等 HTTP REST 接口[^1^]。它接收并响应来自客户端（如 `kubectl`、应用程序、其他组件等）的 RESTful API 请求。
+  
+2. **数据存储**：`kube-apiserver` 与 `etcd` 交互，持久化保存集群的状态和配置。它是整个 Kubernetes 系统的数据总线和数据中心。
+  
+3. **认证与授权**：`kube-apiserver` 进行身份验证和访问控制，确保只有授权的用户和系统组件能够对 Kubernetes 资源进行操作。它提供了认证、授权、准入控制、资源配额等集群安全机制。
+  
+4. **架构**：`kube-apiserver` 的架构可以分为四层和一个监听机制，包括 API 层、认证授权层、准入控制层和 etcd 交互层。
+  
+5. **端口**：在默认情况下，`kube-apiserver` 进程在本机的 8080 端口（对应参数 `--insecure-port`）提供 REST 服务，并且可以同时启动 HTTPS 安全端口（`--secure-port=6443`）来加强 REST API 访问的安全性。
+  
+6. **工作原理**：`kube-apiserver` 提供了 Kubernetes 的 REST API，实现了认证、授权和准入控制等安全功能，同时也负责了集群状态的存储操作。
+  
+7. **访问方式**：可以通过 `kubectl` 命令行工具、客户端库和第三方工具与 Kubernetes 集群进行交互。
+  
+
+`kube-apiserver` 作为 Kubernetes 集群的中枢，所有对集群状态的操作都通过它来进行，因此它的地位非常重要。
+
+- `Scheduler`是一个关键组件，负责将Pods（容器的逻辑封装）调度到集群中的节点上。它需要考虑资源需求、硬件/软件/策略约束、亲和性和反亲和性规则、数据位置、工作负载间干扰和最终用户指定的调度要求。
+  
+- `Controller Manager`是一个核心组件，主要负责管理集群中的各种Pod，以确保集群的实际状态与用户的期望状态保持一致。
+  
+- `etcd`是一个开源的分布式键值存储系统，主要用于共享配置和服务发现。
+  
+
+以下是etcd的一些核心组件和它们的作用：
+
+1. **Client层**：包含client v2和v3两个大版本的API客户端，用于客户端与etcd服务器之间的通信。
+  
+2. **API网络层**：主要包含客户端访问服务器和服务器节点之间的通信协议。客户端访问服务器分为两个版本：v2 
+  API采用HTTP/1.x协议，v3 
+  API采用gRPC协议；服务器之间的通信是指节点间通过Raft算法实现数据复制和Leader选举等功能时使用的HTTP协议。
+  
+3. **Raft算法层**：实现了Leader选举、日志复制、ReadIndex等核心算法特性，用于保障etcd多节点间的数据一致性、提升服务可用性等，是etcd的基石和亮点。
+  
+4. **功能逻辑层**：etcd核心特性实现层，如典型的KVServer模块、MVCC模块、Auth鉴权模块、Lease租约模块、Compactor压缩模块等。其中MVCC模块主要有treeIndex模块和boltdb模块组成。
+  
+5. **存储层**：包含预写日志WAL模块、快照Snapshot模块、boltdb模块。WAL可保障etcd crash后数据不丢失，boltdb则保存了集群元数据和用户写入的数据。
+  
+
+etcd的特点包括简单性、键值对存储、监测变更、安全性、快速性和可靠性。
+
+## minikube搭建环境
+
+![](https://s2.loli.net/2024/11/04/Vd4ejir1FTXSRA3.png)
+
+敬请期待, 博主正在学习...
