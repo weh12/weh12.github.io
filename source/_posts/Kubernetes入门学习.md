@@ -215,5 +215,265 @@ etcd的特点包括简单性、键值对存储、监测变更、安全性、快�
 ## minikube搭建环境
 
 ![](https://s2.loli.net/2024/11/04/Vd4ejir1FTXSRA3.png)
+除了搭建一个kubernetes集群环境之外, 你还需要使用`kubectl`这个命令行工具来同你创建的kubernetes集群进行交互, 比如创建一个Pod或者Service查看集群的状态等等
+
+### 基本安装流程
+
+以下是在你的电脑上使用 Minikube 搭建开发环境的步骤：
+
+#### 安装 prerequisites
+
+1. **Docker**: Minikube 需要 Docker 来运行虚拟机或者容器。
+  
+  - [下载并安装 Docker](https://docs.docker.com/get-docker/)
+2. **kubectl**:
+  
+  - [从 Minikube 官方网站安装 
+    kubectl](https://minikube.sigs.k8s.io/docs/start/kubectl/)
+3. **VirtualBox 或 VMware** (如果需要虚拟机支持):
+  
+  - [安装 VirtualBox](https://www.virtualbox.org/wiki/Downloads) 或 
+    [VMware](https://www.vmware.com/products/workstation/index.html)
+
+#### 安装 Minikube
+
+1. 打开终端。
+  
+2. 运行以下命令安装 Minikube：
+  
+  ```bash
+  sudo curl -LO 
+  https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd6https://storage.googleapis.com/minikube/releases/latest/mnikube-linux-amd64
+  sudo chmod +x minikube-linux-amd64
+  sudo mv minikube-linux-amd64 /usr/local/bin/minikube
+  ```
+  
+
+#### 启动 Minikube
+
+1. 切换到具有相应权限的目录。
+  
+2. 运行以下命令启动 Minikube：
+  
+  ```bash
+  # 国内用户第一次下载可能会遇到依赖下载失败的情况, 可以切换国内镜像源下载
+  # 加上--image-mirror-country=cn参数
+  minikube start --image-mirror-country=cn
+  ```
+  
+3. 你可以在新的终端窗口中运行 `kubectl cluster-info` 检查集群是否启动成功。
+  
+
+#### 部署应用程序
+
+1. 使用 `kubectl apply -f <your-deployment.yaml>` 命令部署你的应用（假设你有
+  一个已定义的 Kubernetes Deployment YAML 文件）。
+  
+2. 确认部署是否成功，可以使用以下命令：
+  
+  ```bash
+  kubectl get pods
+  ```
+  
+3. 你可以通过访问 Minikube 指定的 IP 地址来测试应用程序。
+  
+
+#### 停止 Minikube
+
+当你完成开发工作后，你可以停止 Minikube：
+
+```bash
+minikube stop
+```
+
+#### 删除 Minikube
+
+如果你想要从系统中完全删除 Minikube，可以运行以下命令：
+
+```bash
+minikube delete
+```
+
+以上就是使用 Minikube 在本地计算机上搭建 Kubernetes 开发环境的步骤。
+Minikube 为开发者提供了一个完整的 Kubernetes 环境，可以在不离开本地环境的情
+况下测试和开发应用程序。
+
+### ubuntu上搭建minikube
+
+在 Ubuntu 22 上安装 Minikube
+**安装依赖**
+
+首先，确保你的系统安装了必要的依赖项：
+
+```
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+```
+
+**安装 Docker**
+
+Minikube 可以使用 Docker 作为其虚拟化驱动程序。按照以下步骤安装 Docker：
+
+```
+sudo apt-get install -y docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+验证 Docker 是否安装成功：
+
+```
+docker --version
+```
+
+示例输出：
+
+```
+Docker version 20.10.7, build f0df350
+```
+
+**使用国内镜像安装 kubectl**
+
+由于网络原因无法访问 Google 的 Kubernetes 存储库，我们可以使用 Azure China 的 Kubernetes 镜像源来下载和安装 kubectl：
+
+```
+1.获取稳定版本号：
+
+VERSION=$(curl -s https://mirror.azure.cn/kubernetes/kubectl/stable.txt)
+echo $VERSION
+
+示例输出：
+
+v1.22.0
+
+2.下载 kubectl：
+
+curl -LO "https://mirror.azure.cn/kubernetes/kubectl/$VERSION/bin/linux/amd64/kubectl"
+
+3.安装 kubectl：
+
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+4.验证安装：
+
+kubectl version --client
+
+示例输出：
+
+Client Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.0", GitCommit:"abcdef", GitTreeState:"clean", BuildDate:"2022-07-15T12:00:00Z", GoVersion:"go1.16.5", Compiler:"gc", Platform:"linux/amd64"}
+```
+
+**安装 Minikube**
+
+从 Minikube 的官方网站下载并安装最新版本的 Minikube：
+
+```
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+验证 Minikube 是否安装成功：
+
+```
+minikube version
+```
+
+示例输出：
+
+```
+minikube version: v1.33.1
+commit: 2f223910e89575eb6b2cf301748c1126d88a1585
+```
+
+**启动 Minikube**
+
+使用以下命令启动 Minikube：
+
+```
+minikube start --driver=docker
+```
+
+示例输出：
+
+```
+😄 minikube v1.33.1 on Ubuntu 22.04 (vbox/amd64)
+✨ Using the docker driver based on user configuration
+👍 Starting control plane node minikube in cluster minikube
+🚜 Pulling base image ...
+🔥 Creating docker container (CPUs=2, Memory=4000MB) ...
+🐳 Preparing Kubernetes v1.23.3 on Docker 20.10.7 ...
+ ▪ kubelet.housekeeping-interval=5m
+🚀 Launching Kubernetes ...
+ ▪ apiserver.advertise-address=192.168.99.100
+🌟 Enabling addons: default-storageclass, storage-provisioner
+🏄 Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+```
+
+**启用 Ingress 插件**
+
+为了使局域网内的其他机器能够访问 Minikube Dashboard，你需要启用 Ingress 插件：
+
+```
+minikube addons enable ingress
+```
+
+示例输出：
+
+```
+💡 ingress is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
+You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+ ▪ Using image registry.k8s.io/ingress-nginx/controller:v1.10.1
+ ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.4.1
+ ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.4.1
+🔎 Verifying ingress addon...
+🌟 The 'ingress' addon is enabled
+```
+
+让局域网内其他机器访问 Minikube Dashboard
+
+> 使用 `kubectl port-forward`:
+
+- 1.获取 Dashboard 服务名称：
+
+```
+kubectl get svc -n kubernetes-dashboard
+```
+
+示例输出:
+
+```
+NAME                   TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes-dashboard   ClusterIP   10.96.183.235    <none>        80/TCP    10m
+```
+
+- 2.进行端口转发：
+
+```
+kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:80 --address 0.0.0.0 &
+```
+
+- 3.在局域网内的其他机器上，通过以下 URL 访问 Dashboard：
+
+```
+http://<your-host-ip>:8080/
+```
+
+其中 `<your-host-ip>` 是运行 Minikube 的主机的 IP 地址。
+
+如果需要后台运行，可以用nohup命令：
+
+```
+nohup kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:80 --address 0.0.0.0 > port-forward.log 2>&1 &
+```
+
+**设置防火墙（可选）**
+
+如果你在机器上启用了防火墙，可能需要开放相应的端口：
+
+```
+sudo ufw allow 8001
+```
+
+## 使用K3s和Multipass搭建环境
 
 敬请期待, 博主正在学习...
