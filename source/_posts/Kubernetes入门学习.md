@@ -476,4 +476,198 @@ sudo ufw allow 8001
 
 ## 使用K3s和Multipass搭建环境
 
-敬请期待, 博主正在学习...
+### Multipass是什么?
+
+Multipass 是一个开源的虚拟化工具，它允许用户在一个安全的沙箱环境中运行他们的应用程序。这个沙箱环境是一个轻量级的虚拟机（VM），可以用于开发、测试和部署应用程序，而不必担心会影响宿主机器的系统环境。
+
+Multipass 适用于需要隔离开发环境或测试应用程序的场合，尤其是对于那些希望在多种操作系统之间保持一致性开发流程的开发者来说，它是一个非常有用的工具。
+
+### 安装和使用Multipass
+
+![](https://pic.imgdb.cn/item/6739e3f3d29ded1a8cb0e23f.png)
+
+使用 Multipass 创建虚拟机的具体语法相对简单，以下是一些常用的 Multipass 命令和参数：
+
+SHELL
+
+`multipass launch [OPTIONS]`
+
+以下是 `launch` 命令的一些常见选项：
+
+- `-n`, `--name NAME`：指定虚拟机的名称。
+- `-i`, `--image IMAGENAME`：指定要启动的镜像名称。如果你不提供这个选项，Multipass 将使用默认的官方镜像。
+- `-m`, `--memory MEMORY`：指定分配给虚拟机的内存大小（以 MB 为单位）。
+- `-c`, `--cpus CPUS`：指定虚拟机可以使用的 CPU 核心数。
+- `-d`, `--disk SIZE`：指定初始磁盘大小（以 GB 为单位）。
+- `--vm-type TYPE`：指定虚拟机的类型（例如，"normal"，"headless" 等）。
+- `--cloud-init CLOUDINIT`：使用 cloud-init 脚本来自定义虚拟机设置。
+
+以下是一个创建虚拟机的具体例子：
+
+SHELL
+
+`multipass launch -n my-vm --image ubuntu latest --memory 2048 --cpus 2`
+
+这个命令将会创建一个名为 "my-vm" 的 Ubuntu 虚拟机，分配 2048MB 的内存和 2 个 CPU 核心。
+
+如果你想导入一个特定的操作系统镜像并且设置磁盘大小和类型（例如 SSD），可以使用以下命令：
+
+SHELL
+
+`multipass launch -n my-vm --image ubuntu latest --disk-size 30G --storage-engine lvm`
+
+这个例子中，我们将创建一个名为 "my-vm" 的虚拟机，使用 Ubuntu 镜像的最后一个版本，分配 30GB 的磁盘空间，并选择 LVM 作为存储引擎。
+
+> 其他常用 Multipass 命令
+
+- `multipass shell NAME`：进入指定沙盒的终端。
+- `multipass info NAME`：获取关于指定沙盒的信息。
+- `multipass mount [OPTIONS] FILE|DIR [MOUNTPOINT]`：挂载文件或目录到沙盒中。
+- `multipass umount NAME MOUNTPOINT`：从沙盒卸载已挂载的文件或目录。
+- `multipass delete NAME`：删除指定的沙盒。
+- `multipass list`：列出所有创建的沙盒。
+
+![](https://pic.imgdb.cn/item/6739e720d29ded1a8cb36695.png)
+
+multipass默认是不允许直接通过ssh进入的, 需要配置ssh
+
+![](https://pic.imgdb.cn/item/6739e7ded29ded1a8cb409e3.png)
+
+### K3s安装和使用
+
+#### K3s介绍
+
+[k3s](https://k3s.io/) 是一个轻量级的[Kubernetes](https://kubernetes.io/)发行版，它是 [Rancher Labs](https://www.rancher.com/) 推出的一个开源项目，  
+旨在简化[Kubernetes](https://kubernetes.io/)的安装和维护，同时它还是CNCF认证的[Kubernetes](https://kubernetes.io/)发行版。
+
+本指南帮助你使用默认选项快速启动集群。[安装部分](https://docs.k3s.io/zh/installation)更详细地介绍了如何设置 K3s。
+
+有关 K3s 组件如何协同工作的信息，请参阅[架构](https://docs.k3s.io/zh/architecture)。
+
+Kubernetes 新手？Kubernetes 官方文档介绍了一些很好的[基础知识教程](https://kubernetes.io/docs/tutorials/kubernetes-basics/)。
+
+#### 安装脚本
+
+K3s 提供了一个安装脚本，可以方便地将其作为服务安装在基于 systemd 或 openrc 的系统上。该脚本可在 [https://get.k3s.io](https://get.k3s.io) 获得。要使用这种方法安装 K3s，只需运行：
+
+```
+curl -sfL https://get.k3s.io | sh -
+```
+
+> 备注: 中国用户，可以使用以下方法加速安装：
+
+```
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -
+```
+
+运行此安装后：
+
+- K3s 服务将被配置为在节点重启后或进程崩溃或被杀死时自动重启。
+- 将安装其他实用程序，包括 `kubectl`、`crictl`、`ctr`、`k3s-killall.sh` 和 `k3s-uninstall.sh`。
+- [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) 文件将写入到 `/etc/rancher/k3s/k3s.yaml`，由 K3s 安装的 kubectl 将自动使用该文件。
+
+单节点 Server 安装是一个功能齐全的 Kubernetes 集群，它包括了托管工作负载 pod 所需的所有数据存储、control 
+plane、kubelet 和容器运行时组件。除非你希望向集群添加容量或冗余，否则没有必要添加额外的 Server 或 Agent 节点。
+
+要安装其他 Agent 节点并将它们添加到集群，请使用 `K3S_URL` 和 `K3S_TOKEN` 环境变量运行安装脚本。以下示例演示了如何添加 Agent 节点：
+
+```
+curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
+```
+
+> 备注: 中国用户，可以使用以下方法加速安装：
+
+```
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
+```
+
+`K3S_URL` 参数会导致安装程序将 K3s 配置为 Agent 而不是 Server。K3s Agent 将注册到在 URL 上监听的 K3s Server。`K3S_TOKEN` 使用的值存储在 Server 节点上的 `/var/lib/rancher/k3s/server/node-token` 中。
+
+> 备注: 每台主机必须具有唯一的主机名。如果你的计算机没有唯一的主机名，请传递 `K3S_NODE_NAME` 环境变量，并为每个节点提供一个有效且唯一的主机名。
+
+#### 创建和配置master节点
+
+首先我们需要使用multipass创建一个名字叫做k3s的虚拟机，
+
+```bash
+multipass launch --name k3s --cpus 2 --memory 8G --disk 10G
+```
+
+虚拟机创建完成之后，  
+可以配置SSH密钥登录，  
+不过这一步并不是必须的，  
+即使不配置也可以通过`multipass exec`或者`multipass shell`命令来进入虚拟机，  
+然后我们需要在master节点上安装[k3s](https://k3s.io/)，
+
+使用[k3s](https://k3s.io/)搭建kubernetes集群非常简单，  
+只需要执行一条命令就可以在当前节点上安装[k3s](https://k3s.io/)，  
+打开刚刚创建的k3s虚拟机，  
+执行下面的命令就可以安装一个[k3s](https://k3s.io/)的master节点，
+
+```bash
+# 安装k3s的master节点
+curl -sfL https://get.k3s.io | sh -
+```
+
+国内用户可以换成下面的命令，使用ranher的镜像源来安装：
+
+```bash
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -
+```
+
+安装完成之后，可以通过`kubectl`命令来查看集群的状态，
+
+```bash
+sudo kubectl get nodes
+```
+
+#### 创建和配置worker节点
+
+接下来需要在这个master节点上获取一个token，  
+用来作为创建worker节点时的一个认证凭证，  
+它保存在`/var/lib/rancher/k3s/server/node-token`这个文件里面，  
+我们可以使用`sudo cat`命令来查看一下这个文件中的内容，
+
+```bash
+sudo cat /var/lib/rancher/k3s/server/node-token
+```
+
+将TOKEN保存到一个环境变量中
+
+```bash
+TOKEN=$(multipass exec k3s sudo cat /var/lib/rancher/k3s/server/node-token)
+```
+
+保存master节点的IP地址
+
+```bash
+MASTER_IP=$(multipass info k3s | grep IPv4 | awk '{print $2}')
+```
+
+确认：
+
+```bash
+echo $MASTER_IP
+```
+
+使用刚刚的`TOKEN`和`MASTER_IP`来创建两个worker节点  
+并把它们加入到集群中
+
+```bash
+# 创建两个worker节点的虚拟机
+multipass launch --name worker1 --cpus 2 --memory 8G --disk 10G
+multipass launch --name worker2 --cpus 2 --memory 8G --disk 10G
+
+# 在worker节点虚拟机上安装k3s
+ for f in 1 2; do
+     multipass exec worker$f -- bash -c "curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn K3S_URL=\"https://$MASTER_IP:6443\" K3S_TOKEN=\"$TOKEN\" sh -"
+ done
+```
+
+这样就完成了一个多节点的kubernetes集群的搭建。
+
+## 在线实验环境
+
+[Killercoda](https://killercoda.com/)
+
+[Play-With-K8s](https://labs.play-with-k8s.com/)
