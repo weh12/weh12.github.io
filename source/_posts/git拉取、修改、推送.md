@@ -17,7 +17,7 @@ cover: https://pic.imgdb.cn/item/67178df4d29ded1a8c753815.jpg
 上面的邮箱地址写你在github上注册的邮箱地址，命令执行后会要求你确认路径和输入密码，一路回车。成功的话就会在~/下生成.ssh文件夹，进去打开id_rsa.pub，复制里面所有内容，也就是key。
 登录到github上，进入Account Setting,左边选择SSH Keys,Add SSH Key，title随便填，粘贴在你电脑上生成的key。
 
-![这里写图片描述](https://img-blog.csdn.net/20160726201447336)
+![这里写图片描述](https://pic.imgdb.cn/item/67178df4d29ded1a8c753815.jpg)
 
 这里写图片描述
 
