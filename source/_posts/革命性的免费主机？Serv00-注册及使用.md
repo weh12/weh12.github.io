@@ -7,6 +7,8 @@ cover: https://pic.imgdb.cn/item/672dfef2d29ded1a8c56dcd3.png
 ---
 ## 介绍
 
+> 悲报：Serv00服务器已经耗完
+
 Serv00 提供完全免费的虚拟主机，并且可以连接 SSH 和运行第三方程序，以下是其配置：
 
 ![](https://s2.loli.net/2024/11/08/eyaWE5xQwLKSH3M.png)
