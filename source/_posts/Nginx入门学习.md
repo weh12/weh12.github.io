@@ -11,7 +11,7 @@ Nginx（发音为“engine-x”）是一个高性能的HTTP和反向代理服务
 
 Nginx是为了解决C10K=10000 concurrent connection, 同时处理10000个并发连接, 这个问题是在当时是非常严重的, 因为当时的服务器软件都是单线程的, 所以在高并发的情况下服务器的性能会变得非常的差
 
-![](file:///home/tuowo/.config/marktext/images/2024-10-24-00-50-21-image.png?msec=1729714712626)
+![](https://pic.imgdb.cn/item/6762e665d0e0a243d4e62d2b.jpg)
 
 Nginx的出现很好的解决了这个问题, Nginx可以支持5万个并发连接, 在后来的发展中Nginx也逐渐成为了最流行的Web服务器软件
 

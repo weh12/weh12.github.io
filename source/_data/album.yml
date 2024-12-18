@@ -1,9 +1,30 @@
-- class_name: 美女&&Cosplay
+- class_name: 芙芙
   path_name: /wordScenery
   type: 2
   description: 老司机你懂得
-  cover: https://s2.loli.net/2024/10/04/P2lZ1MVpvSYs9ry.webp
-  top_background: https://s2.loli.net/2024/10/04/wSexMmzXB2REu6U.webp
+  cover: https://static.wenshushu.cn/uf/fu8w6bw95hn/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  top_background: https://static.wenshushu.cn/uf/fu8w6bw95hn/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  album_list:
+    - date: 2023-12-25
+      content: 芙芙
+      address: 原神
+      from: 紫菜卷
+      image:
+        - https://static.wenshushu.cn/uf/fu8w6bw95hn/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+
+- class_name: 银狼
+  path_name: /wordScenery
+  type: 2
+  description: 星穹铁道
+  cover: https://static.wenshushu.cn/uf/fu8u95kikgb/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  top_background: https://static.wenshushu.cn/uf/fu8u95kikgb/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
   rowHeight: 220
   limit: 10
   lazyload: true
@@ -13,15 +34,71 @@
   top_btn_text: 返回
   album_list:
     - date: 2022/10/26 01:00:00
-      content: 妮可
-      address: 绝区零
+      content: 银狼
+      address: 星穹铁道
       from: 再吃一口就减肥
       image:
-        - https://s2.loli.net/2024/10/04/6aD2L49yzPSlChI.webp
-    - date: 2022-10-25
-      content: 妮可
-      address: 河南洛阳
-      from: 紫菜卷
+        - https://static.wenshushu.cn/uf/fu8u95kikgb/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+
+- class_name: 符玄
+  path_name: /wordScenery
+  type: 2
+  description: 星穹铁道
+  cover: https://static.wenshushu.cn/uf/fu8u50w1i3o/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  top_background: https://static.wenshushu.cn/uf/fu8u50w1i3o/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  album_list:
+    - date: 2022/10/26 01:00:00
+      content: 符玄
+      address: 星穹铁道
+      from: 再吃一口就减肥
       image:
-        - https://s2.loli.net/2024/10/04/acmL4VNwBsigTb9.webp
-        - https://s2.loli.net/2024/10/04/aqcIxT8nRHSuVr6.webp
+        - https://static.wenshushu.cn/uf/fu8u50w1i3o/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+
+- class_name: 荧和玛拉妮
+  path_name: /wordScenery
+  type: 2
+  description: 原神
+  cover: https://static.wenshushu.cn/uf/fu8u95kh5vv/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  top_background: https://static.wenshushu.cn/uf/fu8u95kh5vv/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  album_list:
+    - date: 2022/10/26 01:00:00
+      content: 荧和玛拉妮
+      address: 原神
+      from: 再吃一口就减肥
+      image:
+        - https://static.wenshushu.cn/uf/fu8u95kh5vv/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+
+- class_name: 胡桃
+  path_name: /wordScenery
+  type: 2
+  description: 原神
+  cover: https://static.wenshushu.cn/uf/fu8u50w2wo4/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  top_background: https://static.wenshushu.cn/uf/fu8u50w2wo4/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  album_list:
+    - date: 2022/10/26 01:00:00
+      content: 胡桃
+      address: 原神
+      from: 再吃一口就减肥
+      image:
+        - https://static.wenshushu.cn/uf/fu8u50w2wo4/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200      
