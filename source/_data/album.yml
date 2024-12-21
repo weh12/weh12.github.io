@@ -2,8 +2,8 @@
   path_name: /wordScenery
   type: 2
   description: 老司机你懂得
-  cover: https://static.wenshushu.cn/uf/fu8w6bw95hn/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
-  top_background: https://static.wenshushu.cn/uf/fu8w6bw95hn/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  cover: http://118.193.46.48:5244/d/123yunpan/972af1cfcd4e8ed2ef280e5d6642ad9b12762770.jpg?sign=NiG-IRDhhbnPHgFNuyc677SOpnc2b5ToTCQogyJIETs=:0
+  top_background: http://118.193.46.48:5244/d/123yunpan/972af1cfcd4e8ed2ef280e5d6642ad9b12762770.jpg?sign=NiG-IRDhhbnPHgFNuyc677SOpnc2b5ToTCQogyJIETs=:0
   rowHeight: 220
   limit: 10
   lazyload: true
@@ -23,7 +23,7 @@
   path_name: /wordScenery
   type: 2
   description: 星穹铁道
-  cover: https://static.wenshushu.cn/uf/fu8u95kikgb/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  cover: http://118.193.46.48:5244/d/123yunpan/123772476_p0_master1200.jpg?sign=Os3NmuuRL8EBnOMFdtm46vXgOPHCs-MyMpMXQmlHT9U=:0
   top_background: https://static.wenshushu.cn/uf/fu8u95kikgb/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
   rowHeight: 220
   limit: 10
@@ -44,7 +44,7 @@
   path_name: /wordScenery
   type: 2
   description: 星穹铁道
-  cover: https://static.wenshushu.cn/uf/fu8u50w1i3o/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  cover: http://118.193.46.48:5244/d/123yunpan/123933381_p0_master1200.jpg?sign=XDDp97iO29evbvFcztZIGU49ncpOrEpCjBJZ9h8W_pM=:0
   top_background: https://static.wenshushu.cn/uf/fu8u50w1i3o/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
   rowHeight: 220
   limit: 10
@@ -65,7 +65,7 @@
   path_name: /wordScenery
   type: 2
   description: 原神
-  cover: https://static.wenshushu.cn/uf/fu8u95kh5vv/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  cover: http://118.193.46.48:5244/d/123yunpan/Konachan.com%20-%20381133%20sample.jpg?sign=dIeeRpPbukoaEPNz8qnxJcqPJIqgukKXtQbOI2HMSlM=:0
   top_background: https://static.wenshushu.cn/uf/fu8u95kh5vv/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
   rowHeight: 220
   limit: 10
@@ -86,7 +86,7 @@
   path_name: /wordScenery
   type: 2
   description: 原神
-  cover: https://static.wenshushu.cn/uf/fu8u50w2wo4/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  cover: http://118.193.46.48:5244/d/123yunpan/Konachan.com%20-%20384249%20sample.jpg?sign=dWFo8T9fKi-OCcywF5RlI8xDyqjB-eM0FNI9ouU2-n8=:0
   top_background: https://static.wenshushu.cn/uf/fu8u50w2wo4/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
   rowHeight: 220
   limit: 10
@@ -102,3 +102,24 @@
       from: 再吃一口就减肥
       image:
         - https://static.wenshushu.cn/uf/fu8u50w2wo4/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200      
+
+- class_name: 希儿
+  path_name: /wordScenery
+  type: 2
+  description: 崩坏3
+  cover: http://118.193.46.48:5244/d/123yunpan/4.png?sign=z_SrbD5Azu4JJNOVMehGbg3K82XNRYzafF2tFN8WBAU=:0
+  top_background: https://static.wenshushu.cn/uf/fu8u50w2wo4/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: http://118.193.46.48:5244/123yunpan
+  top_btn_text: 返回
+  album_list:
+    - date: 2022/10/26 01:00:00
+      content: 希儿
+      address: 崩坏3
+      from: 再吃一口就减肥
+      image:
+        - https://static.wenshushu.cn/uf/fu8u50w2wo4/img?st=Zmwyd2dnbTVpZ2EuMVo5Rms%3D&op=zmmw-1200  
