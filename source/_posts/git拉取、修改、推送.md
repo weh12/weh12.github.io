@@ -1,5 +1,6 @@
 ---
 title: git拉取、修改、推送
+date: 2024-10-17 00:26:59
 categories: 教程
 tags: git
 cover: https://pic.imgdb.cn/item/67178df4d29ded1a8c753815.jpg
